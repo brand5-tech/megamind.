@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+         <meta name="viewport"content="width=device-width, initial-scale=1"> 
+           
+            <title>Available Products</title>
+            <link rel="stylesheet"  href="Index.css">
+            <script src="index.js"></script>
+            <script>
+                // Initialize an empty array to hold cart items
+                let cart = [];
+    
+                // Function to add items to the cart
+                function AddToCart(name, price) {
+                    const item = { name, price }; // Create an item object
+                    cart.push(item); // Add the item to the cart array
+                    updateCart(); // Update the cart UI
+                }
+    
+                // Function to remove items from the cart
+                function removeFromCart(index) {
+                    cart.splice(index, 1); // Remove item by its index
+                    updateCart(); // Update the cart UI
+                }
+    
+                // Function to update the cart display and total price
+                function updateCart() {
+                    const cartItemsContainer = document.getElementById('cart-items'); // Cart items container
+                    const cartTotalContainer = document.getElementById('cart-total'); // Total price container
+    
+                    cartItemsContainer.innerHTML = ''; // Clear the current cart display
+                    let total = 0; // Initialize total cost to 0
+    
+                    cart.forEach((item, index) => {
+                        const cartItem = document.createElement('div'); // Create a new div for each cart item
+                        cartItem.classList.add('cart-item');
+                        cartItem.innerHTML = `
+                            <span>${item.name} - ${item.price} sh</span>
+                            <button onclick="removeFromCart(${index})">Remove</button>
+                        `; // Display item name, price, and remove button
+                        cartItemsContainer.appendChild(cartItem); // Add item to the cart display
+    
+                        total += item.price; // Add item price to the total cost
+                    });
+    
+                    // Update the total price display
+                    cartTotalContainer.innerText = `Total: ${total} sh`;
+                }
+            </script>
+    
+        </head>
+        <body>
+           
+            <header class="header">
+              <nav class="nav">
+            <a href="#" class="nav_logo">PRODUCTS</a>
+                <ul class="nav_items">
+                  <li class="nav_items">
+                    <a href="Index.html"class="nav_link"> Home</a>
+                    <a href="contact.html"class="nav_link">Contact</a>
+                    <a href="account.html"class="nav_link">Account</a>
+                    </li>
+                </ul> 
+              </nav>
+            </header>
+            <div class="Categories">
+                <div class="small-container">
+                    <h2 class="title">Featured Products</h2>
+                    
+                        <hr />
+                </div>
+                <div class="row">
+                   <div class="column-4">
+                    <div class="card" item="item1">
+                    <img src="images/img 12.jpg" alt="snow" style="width: 100%">
+                    <h4>Short sleeveless sundress</h4>
+                    <p>1000sh</p>
+                    <p><button onclick="AddToCart('Short sleeveless sundress',1000)">Add To Cart</button></p>
+                   </div>
+                </div> 
+                <div class="column-4">
+                    <div class="card" item="item2">
+            <img src="images/img3.jpg" alt="Forest" style="width: 100%">
+            <h4>blue free dress</h4>
+            <p>1500 sh</p>
+            <p><button onclick="AddToCart('blue free dress',1500)">Add To Cart</button></p>
+        </div>
+        </div>
+        <div class="column-4">
+            <div class="card" item="item3">
+            <img src="images/img4.jpg" alt="Mountain" style="width: 100%">
+            <h4>plain yellow jumpsuit</h4>
+            <p>2500sh</p>
+            <p><button onclick="AddToCart('plain yellow jumpsuit',2500)">Add To Cart</button></p>
+        </div>
+        </div>
+        <div class="row">
+        <div class="column-4">
+            <div class="card" item="item4">
+            <img src="images/img2.jpg" alt="mountain" style="width: 100%">
+            <h4>maroon trucksuit</h4>
+            <p>1000sh</p>
+            <p><button onclick="AddToCart('maroon trucksuit',1000)">Add To Cart</button></p>
+        </div>
+        </div>
+        <div class="column-4">
+            <div class="card" item="item5">
+            <img src="images/img5.jpg" alt="forest" style="width: 100%">
+            <h4>blue pinup dress</h4>
+            <p>800sh</p>
+            <p><button onclick="AddToCart('blue pinup dress',800)">Add To Cart</button></p>
+        </div>
+            </div>
+            <div class="cart" id="cart">
+                <h2>Your Cart</h2>
+                <div id="cart-items"></div>
+                <div class="cart-total" id="cart-total">Total: 0 sh</div>
+            </div>
+            <br><br><br><br><br><br><br><br>
+            <h2 class="title">Latest Products</h2>
+                </div>
+            <div class="column-4">
+                
+            <div class="card" item="item6">
+                <img src="images/Designer gowns and accessories.jfif" alt="snow" style="width: 100%">
+                <h4>Dinner dress</h4>
+                <p>2500</p>
+                <p><button onclick="AddToCart('Dinner dress',2500)">Add To Cart</button></p>
+            </div>
+            </div>
+            <div class="column-4">
+             <div class="card" item="item7">
+                <img src="images/vintage dress.webp" alt="snow" style="width: 100%">
+                <h4>vintage black dress</h4>
+                <p>1300</p>
+                <p><button onclick="AddToCart('vintage black dress',1300)">Add To Cart</button></p>
+            </div>
+            </div>
+            <div class="column-4">               
+            <div class="card" item="item8">
+                <img src="images/dree.jpg" alt="snow" style="width: 100%">
+                <h4>Office dress</h4>
+                <p>2500</p>
+                <p><button onclick="AddToCart('Office dress',2500)">Add To Cart</button></p>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+            <div class="offer">
+                <div class="small-container">
+                    <div class="row">
+                        <div class="column-5"></div>
+                        <img src="images/jacket.jpg" alt="snow" style="width: 100%" class="offer-img">
+                    </div>
+                    <div class="column-5">
+                        <p>Exclusively Available on Store</p>
+                        <h1>Smart Band</h1>
+                        <small>Something simple, but sincere and from the heart.“When I'm not around to keep you warm, I hope this wil</small><br><br>
+                        <a href="" class="btn">Buy Now &#8594;</a>
+                     </div>
+                </div>
+            </div>
+        <div>
+            <!-- Checkout Section -->
+    <div class="checkout">
+        <div class="small-container">
+            <h2>Checkout</h2>
+            <form onsubmit="event.preventDefault(); checkout();">
+                <div>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div>
+                    <label for="address">Address:</label>
+                    <input type="text" id="address" required>
+                </div>
+                <div>
+                    <label>Payment Method:</label>
+                    <div>
+                        <input type="radio" name="payment" value="Credit Card" checked> Credit Card
+                    </div>
+                    <div>
+                        <input type="radio" name="payment" value="PayPal"> PayPal
+                    </div>
+                    <div>
+                        <input type="radio" name="payment" value="Mpesa"> Mpesa
+                    </div>
+                </div>
+                <input type="hidden" id="total-price">
+                <button type="submit">Checkout</button>
+            </form>
+        </div>
+    </div>
+        <!-- Footer Section -->
+        <footer class="footer">
+          <div class="footer-container">
+              <div class="footer-links">
+                  <a href="Index.html">Home</a>
+                  <a href="Shop.html">Shop</a>
+                  <a href="Contact.html">Contact Us</a>
+                  <a href="About.html">About Us</a>
+                  <a href="Terms.html">Terms & Conditions</a>
+              </div>
+              <div class="footer-social">
+                  <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                  <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                  <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                  <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+              </div>
+              <div class="footer-info">
+                  <p>&copy; 2024 Your Company Name. All rights reserved.</p>
+              </div>
+          </div>
+      </footer>
+        </body>
+</html>
+
